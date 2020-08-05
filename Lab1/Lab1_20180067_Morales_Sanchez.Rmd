@@ -1,0 +1,72 @@
+---
+title: "Lab1_20180067_Morales_Sanchez"
+output: rmarkdown::github_document
+---
+
+# 1)
+
+```{r}
+library(readxl)
+library(zoo)
+library(readr)
+library(readxl)
+library
+enero <- read_excel("01-2018.xlsx")
+enero$fecha <- as.yearmon("2018-01")
+febrero <- read_excel("02-2018.xlsx")
+febrero$fecha <- as.yearmon("2018-02")
+marzo <- read_excel("03-2018.xlsx")
+marzo$fecha <- as.yearmon("2018-03")
+abril <- read_excel("04-2018.xlsx")
+abril$fecha <- as.yearmon("2018-04")
+mayo <- read_excel("05-2018.xlsx")
+mayo$fecha <- as.yearmon("2018-05")
+junio <- read_excel("06-2018.xlsx")
+junio$fecha <- as.yearmon("2018-06")
+julio <- read_excel("07-2018.xlsx")
+julio$fecha <- as.yearmon("2018-07")
+agosto <- read_excel("08-2018.xlsx")
+agosto$fecha <- as.yearmon("2018-08")
+septiembre <- read_excel("09-2018.xlsx")
+septiembre$fecha <- as.yearmon("2018-09")
+octubre <- read_excel("10-2018.xlsx")
+octubre$fecha <- as.yearmon("2018-10")
+noviembre <- read_excel("11-2018.xlsx")
+noviembre$fecha <- as.yearmon("2018-11")
+julio <- julio[,!(names(julio) %in% "TIPO")]
+agosto <- agosto[,!(names(agosto) %in% "TIPO")]
+agosto <- agosto[,!(names(agosto) %in% "...10")]
+septiembre = septiembre[,!(names(septiembre) %in% "TIPO")]
+octubre = octubre[,!(names(octubre) %in% "TIPO")]
+noviembre = noviembre[,!(names(noviembre) %in% "TIPO")]
+
+Consolidado <- rbind(enero,febrero,marzo,abril,mayo,junio,julio,
+                     agosto,septiembre,octubre,noviembre)
+write_excel_csv2(Consolidado, "Consolidado.xls",   delim =   ",")
+
+```
+
+# 2)
+
+```{r}
+library(modeest)
+a <- sample(x = 0:9,size = 3000,replace = TRUE)
+b <- sample(x = c("Uno","Dos","Tres"),size = 3000,replace = TRUE)
+c <- sample(x = letters,size = 3000,replace = TRUE)
+lista <- list(a,b,c)
+mlv(a)
+mlv(b)
+mlv(c)
+
+modas <- lapply(X = lista,FUN = mlv)
+modas
+```
+
+# 3)
+
+```{r}
+
+parque_vehicuar <-  read_delim("INE_PARQUE_VEHICULAR_080720.txt", delim = "|")
+
+```
+
